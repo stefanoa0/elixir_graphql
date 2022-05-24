@@ -5,7 +5,13 @@ defmodule PlateState.Menu do
 
   import Ecto.Query, warn: false
 
-  alias PlateState.Menu.{Category, Item, Item.Filter, Item.Order}
+  alias PlateState.Menu.{
+    Category,
+    Item,
+    Item.Filter,
+    Item.Order
+  }
+
   alias PlateState.Repo
 
   @doc """
@@ -120,10 +126,19 @@ defmodule PlateState.Menu do
     |> Enum.reduce(Item, fn
       {:order, order}, query ->
         Order.sort(order, query)
+
       {:filter, filter}, query ->
         Filter.filter(filter, query)
     end)
     |> Repo.all()
+  end
+
+  @doc """
+  """
+  def list_items_category(item) do
+    item
+    |> Ecto.assoc(:category)
+    |> Repo.one()
   end
 
   @doc """
@@ -205,5 +220,13 @@ defmodule PlateState.Menu do
   """
   def change_item(%Item{} = item) do
     Item.changeset(item, %{})
+  end
+
+  @doc """
+  """
+  def list_item_tags(item) do
+    item
+    |> Ecto.assoc(:tags)
+    |> Repo.all()
   end
 end

@@ -1,4 +1,5 @@
 defmodule PlateState.Menu.ItemTag do
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
 

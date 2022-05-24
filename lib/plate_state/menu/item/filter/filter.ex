@@ -1,6 +1,8 @@
 defmodule PlateState.Menu.Item.Filter do
+  @moduledoc false
   import Ecto.Query
 
+  @spec filter(Map.t(), atom()) :: atom()
   def filter(filters, item) do
     filters
     |> Enum.reduce(item, &filter_item/2)

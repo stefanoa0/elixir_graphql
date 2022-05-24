@@ -9,6 +9,7 @@ defmodule PlateState.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      elixirc_options: [debug_info: Mix.env() == :dev],
       aliases: aliases(),
       deps: deps()
     ]

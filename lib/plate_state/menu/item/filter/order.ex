@@ -1,4 +1,5 @@
 defmodule PlateState.Menu.Item.Order do
+  @moduledoc false
   import Ecto.Query
 
   def sort(order, item) do

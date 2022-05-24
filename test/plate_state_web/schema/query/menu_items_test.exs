@@ -117,7 +117,8 @@ defmodule PlateStateWeb.Schema.Query.MenuItemsTest do
                "errors" => [
                  %{
                    "locations" => [%{"column" => 13, "line" => 2}],
-                   "message" => "Argument \"filter\" has invalid value {name: 1234}.\nIn field \"name\": Expected type \"String\", found 1234."
+                   "message" =>
+                     "Argument \"filter\" has invalid value {name: 1234}.\nIn field \"name\": Expected type \"String\", found 1234."
                  }
                ]
              } = json_response(conn, 200)
@@ -141,9 +142,9 @@ defmodule PlateStateWeb.Schema.Query.MenuItemsTest do
       conn = get conn, "/api", query: query, variables: %{filter: %{name: name}}
 
       assert %{
-                "data" => %{
-                  "menuItems" => [%{"name" => ^name, "description" => ^description}]
-                }
+               "data" => %{
+                 "menuItems" => [%{"name" => ^name, "description" => ^description}]
+               }
              } = json_response(conn, 200)
     end
   end
