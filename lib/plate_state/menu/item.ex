@@ -13,6 +13,8 @@ defmodule PlateState.Menu.Item do
 
     many_to_many :tags, PlateState.Menu.ItemTag, join_through: "items_taggings"
 
+    has_many :rules, PlateState.Menu.Rule
+
     timestamps()
   end
 

@@ -39,3 +39,45 @@ audi_a3 =
     category_id: category.id,
     tags: [audi_tag]
   })
+
+PlateState.Repo.insert(%PlateState.Menu.Rule{
+  name: "max_cv",
+  value: "204.0",
+  type: "float",
+  item_id: audi_a3.id
+})
+
+PlateState.Repo.insert(%PlateState.Menu.Rule{
+  name: "max_km",
+  value: "210",
+  type: "integer",
+  item_id: audi_a3.id
+})
+
+PlateState.Repo.insert(%PlateState.Menu.Rule{
+  name: "acceleration",
+  value: "7.4",
+  type: "float",
+  item_id: audi_a3.id
+})
+
+PlateState.Repo.insert(%PlateState.Menu.Rule{
+  name: "max_cv",
+  value: "220.0",
+  type: "float",
+  item_id: audi_a8.id
+})
+
+PlateState.Repo.insert(%PlateState.Menu.Rule{
+  name: "max_km",
+  value: "230",
+  type: "integer",
+  item_id: audi_a8.id
+})
+
+PlateState.Repo.insert(%PlateState.Menu.Rule{
+  name: "acceleration",
+  value: "6.4",
+  type: "float",
+  item_id: audi_a8.id
+})

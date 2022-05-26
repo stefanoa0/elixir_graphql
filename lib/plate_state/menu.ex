@@ -9,7 +9,9 @@ defmodule PlateState.Menu do
     Category,
     Item,
     Item.Filter,
-    Item.Order
+    Item.Order,
+    ItemTag,
+    Search
   }
 
   alias PlateState.Repo
@@ -131,6 +133,13 @@ defmodule PlateState.Menu do
         Filter.filter(filter, query)
     end)
     |> Repo.all()
+    |> Repo.preload(:rules)
+    |> PlateState.Parsers.pivot_entity([:rules])
+  end
+
+  def list_items() do
+    Item
+    |> Repo.all()
   end
 
   @doc """
@@ -228,5 +237,19 @@ defmodule PlateState.Menu do
     item
     |> Ecto.assoc(:tags)
     |> Repo.all()
+  end
+
+  @doc """
+  """
+  def list_tags do
+    ItemTag
+    |> Repo.all()
+  end
+
+  @doc """
+  """
+  def search(term) do
+    term
+    |> Search.search()
   end
 end

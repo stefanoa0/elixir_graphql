@@ -21,5 +21,6 @@ defmodule PlateStateWeb.Schema.Categories do
   object :category do
     field :id, :id
     field :name, :string
+    field :description, :string
   end
 end

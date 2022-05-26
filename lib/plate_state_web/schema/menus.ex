@@ -37,6 +37,7 @@ defmodule PlateStateWeb.Schema.Menus do
     field :name, :string
     field :description, :string
     field :price, :float
+    field :rules, :json
 
     field :category, :category do
       resolve(&Menu.item_category/3)

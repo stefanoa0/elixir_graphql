@@ -23,4 +23,12 @@ defmodule PlateStateWeb.Resolvers.Menu do
   def tags(_, _, _) do
     {:ok, Menu.list_tags()}
   end
+
+  def search(_, %{matching: term}, _) do
+    {:ok, Menu.search(term)}
+  end
+
+  def type(%Menu.Item{}, _), do: :menu_item
+  def type(%Menu.Category{}, _), do: :category
+  def type(_, _), do: nil
 end
