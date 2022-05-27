@@ -16,6 +16,13 @@ defmodule PlateStateWeb.Resolvers.Menu do
     {:ok, Menu.list_item_tags(item)}
   end
 
+  def create_item(_, %{input: params}, _) do
+    case Menu.create_item(params) do
+      {:ok, _} = success -> success
+      {:error, _} = error -> error
+    end
+  end
+
   def categories(_, _, _) do
     {:ok, Menu.list_categories()}
   end

@@ -137,7 +137,7 @@ defmodule PlateState.Menu do
     |> PlateState.Parsers.pivot_entity([:rules])
   end
 
-  def list_items() do
+  def list_items do
     Item
     |> Repo.all()
   end

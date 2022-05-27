@@ -4,6 +4,7 @@ defmodule PlateStateWeb.Schema.Custom.JSON do
   Requires `{ :jason, "~> 1.1" }` package: https://github.com/michalmuskala/jason
   """
   use Absinthe.Schema.Notation
+  alias Absinthe.Blueprint.Input
 
   scalar :json, name: "Json" do
     description("""
@@ -16,16 +17,16 @@ defmodule PlateStateWeb.Schema.Custom.JSON do
     parse(&decode/1)
   end
 
-  @spec decode(Absinthe.Blueprint.Input.String.t()) :: {:ok, term()} | :error
-  @spec decode(Absinthe.Blueprint.Input.Null.t()) :: {:ok, nil}
-  defp decode(%Absinthe.Blueprint.Input.String{value: value}) do
+  @spec decode(Input.String.t()) :: {:ok, term()} | :error
+  @spec decode(Input.Null.t()) :: {:ok, nil}
+  defp decode(%Input.String{value: value}) do
     case Jason.decode(value) do
       {:ok, result} -> {:ok, result}
       _ -> :error
     end
   end
 
-  defp decode(%Absinthe.Blueprint.Input.Null{}) do
+  defp decode(%Input.Null{}) do
     {:ok, nil}
   end
 
