@@ -1,5 +1,7 @@
-defmodule PlateState.Parsers.TypeHelper do
-
+defmodule PlateState.Helpers.Type do
+  @moduledoc """
+  This module is responsible to change types
+  """
   @spec string_to(String.t(), String.t()) :: any()
   def string_to(value, type \\ "string")
 

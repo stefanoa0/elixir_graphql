@@ -1,6 +1,8 @@
 defmodule PlateState.Parsers do
-
-  alias PlateState.Parsers.ListHelper
+  @moduledoc """
+  Doc
+  """
+  alias PlateState.Helpers.List, as: ListHelper
 
   @default_args [:rules]
   def pivot_entity(entity, args \\ @default_args)
@@ -10,12 +12,13 @@ defmodule PlateState.Parsers do
   end
 
   def pivot_entity(entity, args) do
-    var = args
-    |> Enum.map(fn arg ->
+    var =
+      args
+      |> Enum.map(fn arg ->
         key = Map.get(entity, arg)
         {arg, ListHelper.to_map(key)}
       end)
-    |> Enum.into(%{})
+      |> Enum.into(%{})
 
     Map.merge(entity, var)
   end

@@ -36,7 +36,7 @@ defmodule PlateStateWeb.Schema.Menus do
     field :id, :id
     field :name, :string
     field :description, :string
-    field :price, :float
+    field :price, :decimal
     field :rules, :json
 
     field :category, :category do
@@ -46,5 +46,12 @@ defmodule PlateStateWeb.Schema.Menus do
     field :tags, list_of(:tag) do
       resolve(&Menu.item_tags/3)
     end
+  end
+
+  input_object :menu_item_input do
+    field :name, non_null(:string)
+    field :description, :string
+    field :price, non_null(:decimal)
+    field :category_id, non_null(:integer)
   end
 end

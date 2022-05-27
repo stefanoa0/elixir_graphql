@@ -6,10 +6,11 @@ defmodule PlateState.ParsersTest do
   describe "pivot_entity/2" do
     test "list to map" do
       entity = %{name: "bla", rules: [%{name: "max_km", value: "100"}]}
+
       assert %{
-        name: "bla",
-        rules: %{"max_km" => "100"}
-        } = EntityParser.pivot_entity(entity) |> IO.inspect()
+               name: "bla",
+               rules: %{"max_km" => "100"}
+             } = EntityParser.pivot_entity(entity)
     end
 
     test "list to map - many elems" do
@@ -24,14 +25,14 @@ defmodule PlateState.ParsersTest do
       }
 
       assert %{
-        name: "bla",
-        rules: %{
-          "max_km" => 100,
-          "acceleration" => 7.4,
-          "max_cv" => 140,
-          "nivel" => 5
-        }
-      } == EntityParser.pivot_entity(service)
+               name: "bla",
+               rules: %{
+                 "max_km" => 100,
+                 "acceleration" => 7.4,
+                 "max_cv" => 140,
+                 "nivel" => 5
+               }
+             } == EntityParser.pivot_entity(service)
     end
 
     test "list to map - many columns" do
@@ -52,20 +53,20 @@ defmodule PlateState.ParsersTest do
       }
 
       assert %{
-        name: "bla",
-        rules: %{
-          "max_km" => 100,
-          "acceleration" => 7.4,
-          "max_cv" => 140,
-          "nivel" => 5
-        },
-        preferences: %{
-          "max_km" => 10,
-          "acceleration" => 5.4,
-          "max_cv" => 12,
-          "nivel" => 3
-        }
-      } == EntityParser.pivot_entity(service, [:rules, :preferences])
+               name: "bla",
+               rules: %{
+                 "max_km" => 100,
+                 "acceleration" => 7.4,
+                 "max_cv" => 140,
+                 "nivel" => 5
+               },
+               preferences: %{
+                 "max_km" => 10,
+                 "acceleration" => 5.4,
+                 "max_cv" => 12,
+                 "nivel" => 3
+               }
+             } == EntityParser.pivot_entity(service, [:rules, :preferences])
     end
   end
 end
